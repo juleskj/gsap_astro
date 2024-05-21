@@ -26,6 +26,7 @@
 
       gsap.registerPlugin(ScrollTrigger);
 
+      // box med klassen a går fra sit start sted til x-aksen 100
       gsap.from(".a", { x: 100 });
 
       gsap.to(".c", {
@@ -33,13 +34,14 @@
         x: 500,
       });
 
+      // scrool trigger timeline
       let tl = gsap.timeline({
         scrollTrigger: {
           trigger: ".b",
-          start: "top 80%", //
+          start: "top 80%",
           end: "bottom end",
-          scrub: true, //
-          markers: true,
+          scrub: true,
+          markers: true, // viser mærker hvor animation starter og slutter
         },
       });
 
