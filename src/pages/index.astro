@@ -1,0 +1,62 @@
+---
+
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <h1>Astro</h1>
+
+    <div class="box a"></div>
+    <div class="space"></div>
+    <div class="box b"></div>
+    <div class="space"></div>
+    <div class="box c"></div>
+
+    <script>
+      import { gsap } from "gsap";
+      import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.from(".a", { x: 100 });
+
+      gsap.to(".c", {
+        scrollTrigger: ".c", // start the animation when ".box" enters the viewport (once)
+        x: 500,
+      });
+
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".b",
+          start: "top 80%", //
+          end: "bottom end",
+          scrub: true, //
+          markers: true,
+        },
+      });
+
+      tl.from(".b", {
+        x: 800,
+        rotation: 40,
+      });
+    </script>
+  </body>
+</html>
+<style>
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+  }
+
+  .space {
+    height: 100vh;
+  }
+</style>
